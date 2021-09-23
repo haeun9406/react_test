@@ -1,59 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Wiz1 from "./photo/wiz1.jpeg"
+import Wiz2 from "./photo/wiz2.jpeg"
 
-class Square extends React.Component {
-    render() {
-        return (
-            <button className="square">
-                {/* TODO */}
-            </button>
-        );
-    }
-}
-
-class Board extends React.Component {
-    renderSquare(i) {
-        return <Square />;
-    }
+class Testcomponent2 extends React.Component {
 
     render() {
-        const status = 'Next player: X';
-
         return (
             <div>
-                <div className="status">{status}</div>
-                <div className="board-row">
-                    {this.renderSquare(0)}
-                    {this.renderSquare(1)}
-                    {this.renderSquare(2)}
-                </div>
-                <div className="board-row">
-                    {this.renderSquare(3)}
-                    {this.renderSquare(4)}
-                    {this.renderSquare(5)}
-                </div>
-                <div className="board-row">
-                    {this.renderSquare(6)}
-                    {this.renderSquare(7)}
-                    {this.renderSquare(8)}
-                </div>
+                <img className={"wiz"} src={Wiz2}/>
             </div>
         );
     }
 }
 
-class Game extends React.Component {
+class TestComponent extends React.Component {
+    state = {
+        showPopup: false
+    }
+
     render() {
         return (
-            <div className="game">
-                <div className="game-board">
-                    <Board />
-                </div>
-                <div className="game-info">
-                    <div>{/* status */}</div>
-                    <ol>{/* TODO */}</ol>
-                </div>
+            <div>
+               <button onClick={()=>this.setState({
+                   showPopup: !this.state.showPopup
+               })}>Wiz</button>
+                {this.state.showPopup&&<div><img className={"wiz"} src={Wiz1} /></div>}
+
+                <Testcomponent2 />
             </div>
         );
     }
@@ -62,6 +37,6 @@ class Game extends React.Component {
 // ========================================
 
 ReactDOM.render(
-    <Game />,
+    <TestComponent />,
     document.getElementById('root')
 );
